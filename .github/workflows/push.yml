@@ -14,8 +14,8 @@ on:
     - '**.md'
 
 env:
-  DOCKER_BASE_NAME: docker.pkg.github.com/${{ github.repository }}/mdbook
-  DOCKER_HUB_BASE_NAME: peaceiris/mdbook
+  DOCKER_BASE_NAME: docker.pkg.github.com/${{ github.repository }}/demo-container
+  DOCKER_HUB_BASE_NAME: a2ito/demo-container
 
 jobs:
   hadolint:
@@ -56,10 +56,6 @@ jobs:
       run: |
         docker build . -t "${PKG_TAG}" --build-arg BASE_IMAGE="${{ matrix.baseimage }}"
         docker tag "${PKG_TAG}" "${HUB_TAG}"
-
-    - name: Print mdBook version
-      run: |
-        docker run --rm ${PKG_TAG} --version
 
     - name: Scan image
       run: |
