@@ -26,7 +26,7 @@ func main() {
 	})
 	e.GET("/app", func(c echo.Context) error {
 		c.Response().Header().Set(echo.HeaderAccessControlAllowOrigin, "*")
-		c.Response().Header().Set(echo.HeaderAccessControlAllowMethods, "*")
+		c.Response().Header().Set(echo.HeaderAccessControlAllowMethods, "GET,POST")
 		return c.JSON(
 			http.StatusOK,
 			struct {
